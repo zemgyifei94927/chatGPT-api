@@ -1,5 +1,6 @@
 package cn.Yifei.chatGPT.api.test;
 
+import cn.Yifei.chatGPT.api.application.ai.IOpenAI;
 import cn.Yifei.chatGPT.api.application.zsxq.IZsxqApi;
 import cn.Yifei.chatGPT.api.application.zsxq.model.aggregates.MyQuestionAggregates;
 import cn.Yifei.chatGPT.api.application.zsxq.service.ZsxqApi;
@@ -34,6 +35,8 @@ public class SpringBootRunTest {
 
     @Resource
     private IZsxqApi zsxqApi;
+    @Resource
+    private IOpenAI openAI;
 
     @Test
     public void test_zsxqApi() throws IOException {
@@ -45,5 +48,10 @@ public class SpringBootRunTest {
 
         //回答问题
         zsxqApi.answer(cookie, text);
+    }
+    @Test
+    public void test_openAI() throws IOException {
+        String response = openAI.doChatGPT("Give me a bucketsort in java.");
+        logger.info("测试结果 :{}", response);
     }
 }

@@ -72,4 +72,25 @@ public class ApiTest {
             System.out.println("response.getStatusLine().getStatusCode()");
         }
     }
+
+    @Test
+    public void test_chatGPT() throws IOException {
+        // httpclient用于执行http request
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        // url是chatGPT的API
+        HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
+        post.addHeader("Content-Type", "application/json");
+        post.addHeader("Authorization", "Bearer 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");
+        String paramJson = "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Give me a bucketsort in java.\"}],\"temperature\": 0.7}";
+        StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
+        post.setEntity(stringEntity);
+        CloseableHttpResponse response = httpClient.execute(post);
+        // 如果返回正常则执行以下
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+            String res = EntityUtils.toString(response.getEntity());
+            System.out.println(res);
+        }else{
+            System.out.println("response.getStatusLine().getStatusCode()");
+        }
+    }
 }

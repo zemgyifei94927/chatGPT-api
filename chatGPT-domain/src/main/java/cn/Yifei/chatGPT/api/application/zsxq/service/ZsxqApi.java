@@ -60,7 +60,7 @@ public class ZsxqApi implements IZsxqApi {
         HttpPost post = new HttpPost("https://api.zsxq.com/v2/topics/412282841855418/comments");
         post.addHeader("cookie", cookie);
         post.addHeader("Content-Type", "application/json;  text/plain");
-        post.addHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36");
+        //post.addHeader("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36");
 
         AnswerReq answerReq = new AnswerReq(new Req_data(text));
         String paramJson = JSONObject.fromObject(answerReq).toString();

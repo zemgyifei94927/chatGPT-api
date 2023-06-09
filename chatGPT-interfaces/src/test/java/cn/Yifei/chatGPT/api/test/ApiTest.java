@@ -80,7 +80,7 @@ public class ApiTest {
         // url是chatGPT的API
         HttpPost post = new HttpPost("https://api.openai.com/v1/chat/completions");
         post.addHeader("Content-Type", "application/json");
-        post.addHeader("Authorization", "Bearer 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");
+        post.addHeader("Authorization", "Bearer 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");
         String paramJson = "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"Give me a bucketsort in java.\"}],\"temperature\": 0.7}";
         StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
         post.setEntity(stringEntity);
